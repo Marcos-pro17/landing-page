@@ -304,7 +304,7 @@
       padding: 28px;
       font-family: 'Courier New', monospace;
       font-size: 11px;
-      color: #171515;
+      color: #FFFFFF;
       letter-spacing: 2px;
       border-top: 1px solid #1a1a1a;
     }
