@@ -293,7 +293,7 @@
     }
 
     .ficha table td:last-child {
-      color: #cccccc;
+      color: #171515;
     }
 
     /* ── FOOTER ── */
