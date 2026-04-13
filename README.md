@@ -280,6 +280,7 @@
     .ficha table tr td {
       padding: 7px 0;
       border-bottom: 1px solid #1c1c1c;
+      color: #171515;
     }
 
     .ficha table tr:last-child td {
@@ -294,6 +295,7 @@
 
     .ficha table td:last-child {
       color: #171515;
+      
     }
 
     /* ── FOOTER ── */
