@@ -58,6 +58,7 @@
     }
 
     #inicio img {
+      <img src="ChatGPT Image 13 d'abr. del 2026"
       width: 100%;
       max-width: 400px;
       border: 2px solid #8b0000;
