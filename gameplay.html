@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MONEY — Gameplay</title>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Special+Elite&display=swap" rel="stylesheet">
+    <style>
+        :root { --blood: #8B0000; --dark: #050505; --darker: #0a0a0a; --gray: #1a1a1a; --text: #c9b99a; --dim: #6b5c4a; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--dark); color: var(--text); font-family: 'Special Elite', serif; cursor: crosshair; overflow-x: hidden; }
+        body::before { content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9999; opacity: 0.4; }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(5,5,5,0.95); border-bottom: 1px solid #1a0000; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { font-family: 'Creepster', cursive; font-size: 1.8rem; color: var(--blood); text-shadow: 0 0 20px rgba(139,0,0,0.8); letter-spacing: 4px; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--dim); text-decoration: none; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--blood); }
+        .drip-bar { width: 100%; height: 4px; background: var(--blood); box-shadow: 0 0 20px rgba(139,0,0,0.8); }
+        .page-hero { padding: 10rem 2rem 5rem; text-align: center; background: radial-gradient(ellipse at center, #100000 0%, #050505 70%); }
+        .page-label { font-size: 0.7rem; letter-spacing: 6px; color: var(--blood); text-transform: uppercase; margin-bottom: 1rem; }
+        .page-title { font-family: 'Creepster', cursive; font-size: clamp(3rem, 8vw, 6rem); color: #fff; text-shadow: 2px 2px 0 #1a0000, 0 0 40px rgba(139,0,0,0.4); }
+        .content { max-width: 900px; margin: 0 auto; padding: 5rem 2rem; }
+        .divider { width: 100%; height: 1px; background: linear-gradient(to right, transparent, #3a0000, transparent); margin: 3rem 0; }
+        .section-label { font-size: 0.7rem; letter-spacing: 6px; color: var(--blood); text-transform: uppercase; margin-bottom: 1rem; }
+        .section-title { font-family: 'Creepster', cursive; font-size: clamp(2rem, 5vw, 3.5rem); color: #fff; text-shadow: 2px 2px 0 #1a0000; margin-bottom: 2rem; }
+        .section-text { font-size: 1.1rem; line-height: 2; color: var(--text); margin-bottom: 2rem; }
+
+        .mechanics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .mechanic-card {
+            background: #0d0000;
+            border: 1px solid #2a0000;
+            padding: 2rem;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .mechanic-card:hover {
+            border-color: var(--blood);
+            transform: translateY(-3px);
+        }
+
+        .mechanic-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .mechanic-title {
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--blood);
+            margin-bottom: 0.8rem;
+        }
+
+        .mechanic-text {
+            font-size: 0.95rem;
+            color: var(--dim);
+            line-height: 1.8;
+        }
+
+        .controls-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+
+        .controls-table th {
+            text-align: left;
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--blood);
+            padding: 1rem;
+            border-bottom: 1px solid #2a0000;
+        }
+
+        .controls-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #0f0000;
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+
+        .controls-table tr:hover td { background: #0d0000; }
+
+        .key {
+            background: #1a0000;
+            border: 1px solid #3a0000;
+            padding: 0.2rem 0.6rem;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: var(--text);
+        }
+
+        footer { text-align: center; padding: 3rem; border-top: 1px solid #0f0000; color: var(--dim); font-size: 0.8rem; letter-spacing: 3px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-logo">MONEY</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Inici</a></li>
+            <li><a href="historia.html">Història</a></li>
+            <li><a href="gameplay.html" class="active">Gameplay</a></li>
+            <li><a href="personatges.html">Personatges</a></li>
+            <li><a href="galeria.html">Galeria</a></li>
+            <li><a href="contacte.html">Crèdits</a></li>
+        </ul>
+    </nav>
+    <div class="drip-bar"></div>
+
+    <div class="page-hero">
+        <p class="page-label">Com es juga</p>
+        <h1 class="page-title">Gameplay</h1>
+    </div>
+
+    <div class="content">
+        <p class="section-label">Mecàniques</p>
+        <h2 class="section-title">Com funciona el joc</h2>
+        <p class="section-text">Money és un joc de terror en primera persona amb mecàniques senzilles però efectives. L'objectiu és clar: troba els diners i escapa. Però la casa no ho posarà fàcil.</p>
+
+        <div class="mechanics-grid">
+            <div class="mechanic-card">
+                <div class="mechanic-icon">👁️</div>
+                <div class="mechanic-title">Primera persona</div>
+                <div class="mechanic-text">Veus tot des dels ulls del protagonista. Cada ombra, cada moviment, cada racó fosc és real per a tu.</div>
+            </div>
+            <div class="mechanic-card">
+                <div class="mechanic-icon">🔦</div>
+                <div class="mechanic-title">Llanterna</div>
+                <div class="mechanic-text">L'única llum que tens. Sense ella, no veus res. Amb ella, veus massa coses.</div>
+            </div>
+            <div class="mechanic-card">
+                <div class="mechanic-icon">💰</div>
+                <div class="mechanic-title">Recollida</div>
+                <div class="mechanic-text">Recull els diners escampats per la casa. Cada moneda et porta un pas més a prop de l'escapada.</div>
+            </div>
+            <div class="mechanic-card">
+                <div class="mechanic-icon">🚪</div>
+                <div class="mechanic-title">Exploració</div>
+                <div class="mechanic-text">La casa té planta baixa i desvan. Explora cada habitació amb cura. Algunes zones són segures. D'altres, no.</div>
+            </div>
+            <div class="mechanic-card">
+                <div class="mechanic-icon">👣</div>
+                <div class="mechanic-title">L'enemic</div>
+                <div class="mechanic-text">No sempre és present. Però quan ho és, et persegueix. No pots lluitar. Només pots córrer.</div>
+            </div>
+            <div class="mechanic-card">
+                <div class="mechanic-icon">🏃</div>
+                <div class="mechanic-title">Escapada</div>
+                <div class="mechanic-text">Quan tinguis els diners, busca la sortida. Cada segon compta. L'enemic no descansa.</div>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <p class="section-label">Controls</p>
+        <h2 class="section-title">Com moure's</h2>
+
+        <table class="controls-table">
+            <thead>
+                <tr>
+                    <th>Acció</th>
+                    <th>Control</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Moure's</td><td><span class="key">W</span> <span class="key">A</span> <span class="key">S</span> <span class="key">D</span></td></tr>
+                <tr><td>Mirar</td><td><span class="key">Ratolí</span></td></tr>
+                <tr><td>Recollir objecte</td><td><span class="key">E</span></td></tr>
+                <tr><td>Llanterna</td><td><span class="key">F</span></td></tr>
+                <tr><td>Córrer</td><td><span class="key">Shift</span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <footer>
+        <p>MONEY &copy; 2025 — Yasser & Marcos — SMX Projecte de Síntesi</p>
+    </footer>
+</body>
+</html>

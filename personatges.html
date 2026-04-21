@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MONEY — Personatges</title>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Special+Elite&display=swap" rel="stylesheet">
+    <style>
+        :root { --blood: #8B0000; --dark: #050505; --darker: #0a0a0a; --gray: #1a1a1a; --text: #c9b99a; --dim: #6b5c4a; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--dark); color: var(--text); font-family: 'Special Elite', serif; cursor: crosshair; overflow-x: hidden; }
+        body::before { content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9999; opacity: 0.4; }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(5,5,5,0.95); border-bottom: 1px solid #1a0000; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { font-family: 'Creepster', cursive; font-size: 1.8rem; color: var(--blood); text-shadow: 0 0 20px rgba(139,0,0,0.8); letter-spacing: 4px; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--dim); text-decoration: none; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--blood); }
+        .drip-bar { width: 100%; height: 4px; background: var(--blood); box-shadow: 0 0 20px rgba(139,0,0,0.8); }
+        .page-hero { padding: 10rem 2rem 5rem; text-align: center; background: radial-gradient(ellipse at center, #100000 0%, #050505 70%); }
+        .page-label { font-size: 0.7rem; letter-spacing: 6px; color: var(--blood); text-transform: uppercase; margin-bottom: 1rem; }
+        .page-title { font-family: 'Creepster', cursive; font-size: clamp(3rem, 8vw, 6rem); color: #fff; text-shadow: 2px 2px 0 #1a0000, 0 0 40px rgba(139,0,0,0.4); }
+        .content { max-width: 900px; margin: 0 auto; padding: 5rem 2rem; }
+        .divider { width: 100%; height: 1px; background: linear-gradient(to right, transparent, #3a0000, transparent); margin: 4rem 0; }
+
+        .character {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: start;
+            margin-bottom: 2rem;
+        }
+
+        .character.reverse { grid-template-columns: 2fr 1fr; }
+        .character.reverse .char-visual { order: 2; }
+        .character.reverse .char-info { order: 1; }
+
+        .char-visual {
+            background: #0d0000;
+            border: 1px solid #2a0000;
+            aspect-ratio: 3/4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Creepster', cursive;
+            font-size: 6rem;
+            color: #1a0000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .char-visual::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, transparent 30%, #050505 100%);
+        }
+
+        .char-label { font-size: 0.7rem; letter-spacing: 5px; color: var(--blood); text-transform: uppercase; margin-bottom: 0.5rem; }
+        .char-name { font-family: 'Creepster', cursive; font-size: clamp(2rem, 5vw, 3.5rem); color: #fff; text-shadow: 2px 2px 0 #1a0000; margin-bottom: 1.5rem; line-height: 1; }
+        .char-text { font-size: 1rem; line-height: 2; color: var(--text); margin-bottom: 1.5rem; }
+
+        .char-stats { margin-top: 2rem; }
+        .stat { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; border-bottom: 1px solid #0f0000; font-size: 0.85rem; }
+        .stat-label { color: var(--dim); letter-spacing: 2px; text-transform: uppercase; }
+        .stat-value { color: var(--text); }
+        .stat-value.danger { color: var(--blood); }
+
+        footer { text-align: center; padding: 3rem; border-top: 1px solid #0f0000; color: var(--dim); font-size: 0.8rem; letter-spacing: 3px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-logo">MONEY</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Inici</a></li>
+            <li><a href="historia.html">Història</a></li>
+            <li><a href="gameplay.html">Gameplay</a></li>
+            <li><a href="personatges.html" class="active">Personatges</a></li>
+            <li><a href="galeria.html">Galeria</a></li>
+            <li><a href="contacte.html">Crèdits</a></li>
+        </ul>
+    </nav>
+    <div class="drip-bar"></div>
+
+    <div class="page-hero">
+        <p class="page-label">Els protagonistes</p>
+        <h1 class="page-title">Personatges</h1>
+    </div>
+
+    <div class="content">
+        <div class="character">
+            <div class="char-visual">👤</div>
+            <div class="char-info">
+                <div class="char-label">Protagonista</div>
+                <div class="char-name">El Jugador</div>
+                <p class="char-text">Un noi jove que torna a la seva antiga casa per recuperar els diners de la fiança. No esperava trobar res estrany. No esperava trobar morts. No esperava que alguna cosa el perseguís.</p>
+                <p class="char-text">L'única eina que porta és una llanterna. No pot lluitar. No pot cridar ajuda. Només pot explorar, recollir i escapar.</p>
+                <div class="char-stats">
+                    <div class="stat"><span class="stat-label">Estat</span><span class="stat-value">Viu... de moment</span></div>
+                    <div class="stat"><span class="stat-label">Armes</span><span class="stat-value">Cap</span></div>
+                    <div class="stat"><span class="stat-label">Eina</span><span class="stat-value">Llanterna</span></div>
+                    <div class="stat"><span class="stat-label">Objectiu</span><span class="stat-value">Recuperar els diners</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="character reverse">
+            <div class="char-info">
+                <div class="char-label">Amenaça</div>
+                <div class="char-name">L'Enemic</div>
+                <p class="char-text">No se sap qui és. No se sap d'on ve. Senzillament, és a la casa. I et vol trobar.</p>
+                <p class="char-text">No apareix sempre. Hi ha zones de la casa on reina el silenci. Però quan apareix, no hi ha escapatòria fàcil. Et persegueix per les zones que considera seves. I quan t'atrapa... la partida s'acaba.</p>
+                <div class="char-stats">
+                    <div class="stat"><span class="stat-label">Origen</span><span class="stat-value danger">Desconegut</span></div>
+                    <div class="stat"><span class="stat-label">Velocitat</span><span class="stat-value danger">Alta</span></div>
+                    <div class="stat"><span class="stat-label">Zones actives</span><span class="stat-value danger">Algunes habitacions</span></div>
+                    <div class="stat"><span class="stat-label">Si t'atrapa</span><span class="stat-value danger">Game over</span></div>
+                </div>
+            </div>
+            <div class="char-visual">☠️</div>
+        </div>
+    </div>
+
+    <footer>
+        <p>MONEY &copy; 2025 — Yasser & Marcos — SMX Projecte de Síntesi</p>
+    </footer>
+</body>
+</html>
